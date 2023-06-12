@@ -1,84 +1,165 @@
 * /*selector css*/ {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box; /*solo usa el width para el ancho*/
 }
 
 body {
   font-family: "Syne", sans-serif;
 }
+
 a {
   text-decoration: none; /*desaparece el ___ del A*/
 }
+
 ul li {
   list-style: none; /*desaparece los . del li*/
 }
-:root /*seudoclase del todo html raiz del documento*/ {
+
+/* Variables */
+
+:root {
   --primary: #ffffff; /*color principal*/
-  --secondary: #0c1519; /*color secundario*/
+  --seconadry: #0c1519; /*color secundario*/
 }
+
 body {
-  background-image: url(/images/bg.png); /*fondo imagen*/
+  background-image: url(bg.png); /*fondo imagen*/
   background-size: cover;
-  background-repeat: no-repeat; /*repite el fondo img*/
-  background-color: var(--secondary);
+  background-repeat: no-repeat; /*no repite el fondo img*/
+  background-color: var(--seconadry);
   color: var(--primary);
-  min-height: 100uh;
+  min-height: 100vh;
 }
+
 a {
   color: var(--primary);
 }
+
 img {
   max-width: 100%;
 }
+
 header,
 footer {
   padding: 3.5rem;
 }
+
 header {
   display: flex;
   align-items: center;
 }
+
 header .logo h1,
-nav ul li {
+ul li {
   font-family: "Syne", sans-serif;
+  font-style: normal;
   font-weight: 700;
   font-size: 1rem;
   line-height: 100%; /*altura*/
   letter-spacing: -0.02em; /*espacio entre cada caracterer*/
 }
-header nav ul li {
+
+header ul li {
   font-size: 0.875rem;
   opacity: 0.56;
 }
-header nav ul li:nth-child(1) {
+
+header ul li:nth-child(1) {
   opacity: 1;
 }
-main .title {
+
+main .title p {
   font-family: "Ketsiyo", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
   text-align: center;
-  letter-spacing: -0.02cm;
+  letter-spacing: -0.02em;
 }
+
 footer {
   display: flex; /*1flexbox 2define los ejes principal(horizontal) y secundario(vertical)*/
   justify-content: center; /*lo movemos en el eje principal*/
-  font-family: "Ketsiyo", sans-serif;
   font-family: "Syne", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 100%;
-  letter-spacing: -0.02cm;
+  letter-spacing: -0.02em;
 }
-.grid{
+
+/* Mobile Styles */
+
+.grid {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  
+  grid-template-columns: repeat(4, 1fr);
 }
-/* main>* */
-main>.title,main>.image {
-  grid-column: 1/-1;
+
+main > .title,
+main > .image {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+main .title p {
+  font-size: 3.75rem;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+header ul {
+  display: none;
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 768px) and (max-width: 999px) {
+  header {
+    justify-content: space-between;
+  }
+
+  header ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  main > .title {
+    z-index: 1;
+  }
+
+  main > .title p {
+    font-size: 5.75rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  header {
+    justify-content: space-between;
+  }
+
+  header ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto 250px;
+  }
+
+  main .title {
+    grid-row: 1;
+    z-index: 1;
+  }
+}
+main .title p{
+  font-size: 7.75rem;
+}
+main .image{
+  grid-row: 1/span 2;
 }
